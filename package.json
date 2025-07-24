@@ -7,9 +7,10 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "pnpm --filter test-app dev",
+    "dev": "pnpm --filter test-app dev & pnpm --filter vellum-utils build:watch & pnpm --filter vellum-core build:watch & pnpm --filter velmodel build:watch",
     "build": "pnpm -r build",
-    "build:packages": "cd packages/utils-package && pnpm build && cd ../math-package && pnpm build && cd ../..",
+    "build:watch": "pnpm -r --parallel build:watch",
+    "build:packages": "pnpm --filter vellum-utils build && pnpm --filter vellum-core build && pnpm --filter velmodel build",
     "build:test": "pnpm --filter test-app build",
     "clean": "pnpm -r clean"
   },

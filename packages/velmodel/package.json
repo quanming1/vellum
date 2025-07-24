@@ -1,7 +1,7 @@
 {
-  "name": "vellum-core",
+  "name": "velmodel",
   "version": "1.0.0",
-  "description": "Vellum Core",
+  "description": "velmodel",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -14,7 +14,9 @@
     "dev": "webpack --mode development --watch",
     "clean": "rmdir /s /q dist"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vellum-utils": "workspace:*"
+  },
   "devDependencies": {
     "webpack": "^5.88.0",
     "webpack-cli": "^5.1.4",

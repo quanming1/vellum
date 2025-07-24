@@ -1,7 +1,7 @@
 {
-  "name": "vellum-core",
+  "name": "vellum-utils",
   "version": "1.0.0",
-  "description": "Vellum Core",
+  "description": "Vellum Utils",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

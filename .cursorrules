@@ -4,7 +4,7 @@
 ## 项目信息
 - 项目名字叫：Vellum
 - 这是一个基于pnpm的monorepo项目
-- 包含两个工具包：utils-package（字符串和数组工具）和math-package（数学计算工具）
+- 包含三个工具包：vellum-utils（通用工具）、vellum-core（核心功能）、velmodel（数据模型）
 - 包含一个React测试应用：test-app
 
 ## 开发规则
@@ -29,7 +29,8 @@
 ## 包管理
 - 使用pnpm作为包管理器
 - 工作区配置在pnpm-workspace.yaml中
-- 每个包都有独立的webpack配置
+- 每个包都有独立的webpack配置和babel配置
+- 使用babel处理TypeScript文件，tsc生成类型声明文件
 - 使用workspace:*引用本地包
 
 ## 测试规则

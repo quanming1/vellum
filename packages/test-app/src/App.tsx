@@ -1,16 +1,24 @@
-import { useEffect } from "react";
-import { Velmodel } from "velmodel";
+import { useEffect, useRef, useState } from "react";
+import { Editor } from "vellum-core";
 
 export default function App() {
-  useEffect(() => {
-    const model = new Velmodel();
-    model.insert("Hello\n");
-    model.insert("Wor\nld", { bold: true });
-    model.eachLine((line, index) => {
-      console.log(line);
-      return true;
-    });
-  }, []);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [editor, setEditor] = useState<Editor | null>(null);
 
-  return <h1>App</h1>;
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const editor = new Editor({
+      container: containerRef.current,
+    });
+
+    console.log("editor", editor);
+
+    setEditor(editor);
+  }, [containerRef.current]);
+
+  return (
+    <div ref={containerRef}>
+      <h1>132</h1>
+    </div>
+  );
 }

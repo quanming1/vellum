@@ -19,25 +19,37 @@
     <script>
         const Delta = Quill.import('delta');
         const delta = new Delta();
-        delta.insert("Hello", { bold: true });
+
+        delta.insert("Hello",);
         delta.insert("World");
-        delta.eachLine((line, index) => {
-            console.log(line, index);
-        });
-        // 初始化 Quill 编辑器
-        const quill = new Quill('#editor', {
+        delta.insert("换行\n测试");
+
+        // 渲染delta到页面
+        // 获取editor容器
+        const editorContainer = document.getElementById('editor');
+        // 初始化Quill编辑器
+        const quill = new Quill(editorContainer, {
             theme: 'snow'
         });
 
-        // 显示 Delta 的按钮点击事件
+        // 清空编辑器内容
+        quill.setContents([]);
+        // 将delta内容渲染到编辑器
+        quill.setContents(delta);
+
+        console.log('quill', quill)
+
+        // 显示Delta按钮点击事件
         document.getElementById('show-delta').onclick = () => {
-            // 获取当前内容的 Delta
-            const delta = quill.getContents();
-            // 输出 Delta 到页面
-            document.getElementById('delta-output').textContent = JSON.stringify(delta, null, 2);
-            // 控制台输出，方便调试
-            console.log("当前 Delta 内容：", delta);
+            // 获取当前编辑器的delta内容
+            const currentDelta = quill.getContents();
+            // 显示在页面上
+            document.getElementById('delta-output').textContent = JSON.stringify(currentDelta, null, 2);
+            // 控制台输出
+            console.log("当前Delta内容：", currentDelta);
         };
+
+
     </script>
 </body>
 

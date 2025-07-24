@@ -13,7 +13,8 @@
     "react-dom": "^18.2.0",
     "vellum-utils": "workspace:*",
     "vellum-core": "workspace:*",
-    "velmodel": "workspace:*"
+    "velmodel": "workspace:*",
+    "vellum-react": "workspace:*"
   },
   "devDependencies": {
     "webpack": "^5.88.0",

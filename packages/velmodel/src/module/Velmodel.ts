@@ -3,7 +3,7 @@ import { EOL, OP, OPAttrs, OPEnum } from "./OP";
 import { isObject, isEmptyObject } from "vellum-utils";
 
 export class Velmodel {
-  private ops: OP[] = [];
+  public ops: OP[] = [];
 
   constructor(ops?: OP | OP[]) {
     this.ops = Array.isArray(ops) ? ops : ops ? [ops] : [];

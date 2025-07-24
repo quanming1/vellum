@@ -1,26 +1,29 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
-        library: 'CorePackage',
+        library: 'VellumReactPackage',
         libraryTarget: 'umd',
         clean: true
     },
     resolve: {
-        extensions: ['.ts', '.js']
+        extensions: ['.tsx', '.ts', '.js']
     },
     module: {
         rules: [
             {
-                test: /\.(ts|js)$/,
+                test: /\.(tsx?|jsx?)$/,
                 use: 'babel-loader',
                 exclude: /node_modules/
             }
         ]
     },
+    externals: {
+        react: 'react',
+        'react-dom': 'react-dom'
+    },
     mode: "development"
-
 };

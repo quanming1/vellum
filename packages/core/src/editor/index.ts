@@ -2,6 +2,7 @@ import { Event } from "../Event";
 import { EventType } from "../Event/contant";
 import { State } from "../State";
 import { Selection } from "../Selection";
+import { Velmodel } from "velmodel";
 
 export class Editor {
   public event: Event;
@@ -9,9 +10,9 @@ export class Editor {
   public state: State;
   public selection: Selection;
 
-  constructor(options: { container?: HTMLElement }) {
+  constructor(options: { container?: HTMLElement; model: Velmodel }) {
     this.event = new Event(this);
-    this.state = new State(this);
+    this.state = new State(this, options.model);
     this.selection = new Selection(this);
 
     // 初始化放在后面

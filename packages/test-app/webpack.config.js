@@ -8,6 +8,7 @@ module.exports = {
         filename: 'bundle.js',
         clean: true
     },
+    devtool: 'eval-source-map',
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
     },
@@ -33,5 +34,6 @@ module.exports = {
         port: 3000,
         open: true,
         hot: true
-    }
-}; 
+    },
+    mode: "development"
+};

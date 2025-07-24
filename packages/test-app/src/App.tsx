@@ -11,14 +11,12 @@ export default function App() {
       container: containerRef.current,
     });
 
-    console.log("editor", editor);
-
     setEditor(editor);
   }, [containerRef.current]);
 
   return (
-    <div ref={containerRef}>
-      <h1>132</h1>
+    <div contentEditable suppressContentEditableWarning ref={containerRef}>
+      <h1>132123</h1>
     </div>
   );
 }

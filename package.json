@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "pnpm --filter test-app dev & pnpm --filter vellum-utils build:watch & pnpm --filter vellum-core build:watch & pnpm --filter velmodel build:watch",
+    "dev": "dev.bat",
     "build": "pnpm -r build",
     "build:watch": "pnpm -r --parallel build:watch",
     "build:packages": "pnpm --filter vellum-utils build && pnpm --filter vellum-core build && pnpm --filter velmodel build",

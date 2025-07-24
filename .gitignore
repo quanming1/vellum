@@ -1,0 +1,36 @@
+# 通用忽略规则
+node_modules/
+dist/
+*.log
+.DS_Store
+.env
+.env.local
+.env.*.local
+pnpm-lock.yaml
+
+# IDE相关
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Mac系统文件
+Thumbs.db
+
+# 生产构建输出
+build/
+coverage/
+temp/
+tmp/
+
+# 依赖缓存
+.pnpm-store/
+
+# 其他
+*.tsbuildinfo
+
+# monorepo子包输出
+packages/*/dist/
+packages/*/node_modules/

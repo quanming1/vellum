@@ -1,7 +1,7 @@
 import { Editor } from "../Editor";
 import { EventType } from "../Event/contant";
 import { ValRange } from "./module/ValRange";
-import { getSelection, isBackward } from "./utils";
+import { getDirection, getSelection, toValRange } from "./utils";
 
 export class Selection {
   private editor: Editor;
@@ -16,6 +16,8 @@ export class Selection {
     const sel = getSelection(container!)!;
     if (!container || !sel.focusNode || !container.contains(sel.focusNode) || !sel.anchorNode || !container.contains(sel.anchorNode)) return;
     const range = sel.getRangeAt(0);
-    const direction = isBackward(sel, range);
+    const direction = getDirection(sel, range);
+    const valRange = toValRange(this.editor, range, direction);
+    console.log("valRange", valRange);
   };
 }

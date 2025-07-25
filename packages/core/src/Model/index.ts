@@ -1,7 +1,6 @@
 import { BiWeakMap } from "vellum-utils";
 import { LeafModel, LineModel } from "../State";
 import { Editor } from "../Editor";
-import { EventType } from "../Event/contant";
 
 export class Model {
   private editor: Editor;
@@ -10,12 +9,6 @@ export class Model {
 
   constructor(editor: Editor) {
     this.editor = editor;
-    this.editor.event.on(EventType.EDITOR_DESTROYED, () => {
-      console.log("[Model] 销毁模型缓存");
-
-      this.lineModelCache.clear();
-      this.leafModelCache.clear();
-    });
   }
 
   getLineModel(key: HTMLElement | LineModel) {

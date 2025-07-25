@@ -1,6 +1,6 @@
 import { genUUID } from "vellum-utils";
 import { LineModel } from "./line-model";
-import { OP } from "velmodel";
+import { getOPLength, OP } from "velmodel";
 
 export class LeafModel {
   public key: string;
@@ -16,7 +16,7 @@ export class LeafModel {
   }
 
   get length() {
-    return this.op.insert?.length || 0;
+    return getOPLength(this.op);
   }
 
   get text() {

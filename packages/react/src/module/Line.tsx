@@ -1,14 +1,14 @@
 import { Editor, LineModel } from "vellum-core";
 import { Leaf } from "./Leaf";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 export function Line({ lineModel, editor }: { lineModel: LineModel; editor: Editor }) {
   const lineRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (lineRef.current) {
       editor.model.setLineModel(lineRef.current, lineModel);
     }
-  }, [lineModel, editor]);
+  }, [lineModel, editor, lineRef.current]);
 
   return (
     <div data-node="line" ref={lineRef}>

@@ -1,6 +1,9 @@
 import { Editor } from "../../Editor";
+import { LeafModel, LineModel } from "../../State";
 import { ValRange } from "../module/ValRange";
 import { Point } from "../module/Point";
+import { SelectionDirection } from "../types/module";
+import { findParentLeaf, findParentLine } from "../../Model/utils";
 
 export function getSelection(ele: HTMLElement) {
   if (ele) {
@@ -10,7 +13,7 @@ export function getSelection(ele: HTMLElement) {
 }
 
 // 是不是反向选择
-export function isBackward(sel: Selection, range: Range): "forward" | "backward" | "none" {
+export function getDirection(sel: Selection, range: Range): SelectionDirection {
   if (sel.direction) return sel.direction as "forward" | "backward" | "none";
 
   return sel.anchorNode !== range.startContainer ||
@@ -21,17 +24,20 @@ export function isBackward(sel: Selection, range: Range): "forward" | "backward"
     : "forward";
 }
 
-export function toPoint(editor: Editor, node: HTMLElement, offset: number): Point {
-  // TODO: line
-  // return new Point(node.offsetTop, offset);
-  return new Point(0, 0);
+export function toPoint(editor: Editor, node: HTMLElement, offset: number): Point | null {
+  const line = findParentLine(node);
+  const leaf = findParentLeaf(node);
+  const lineModel = editor.model.getLineModel(line!) as LineModel;
+  const leafModel = editor.model.getLeafModel(leaf!) as LeafModel;
+  if (!lineModel || !leafModel) return null;
+  return new Point(lineModel.index, offset + leafModel.offset);
 }
 
-export function toValRange(editor: Editor, range: Range, isBackward: boolean): ValRange {
+export function toValRange(editor: Editor, range: Range, direction: SelectionDirection): ValRange {
   return new ValRange(
-    toPoint(editor, range.startContainer as HTMLElement, range.startOffset),
-    toPoint(editor, range.endContainer as HTMLElement, range.endOffset),
-    isBackward,
+    toPoint(editor, range.startContainer as HTMLElement, range.startOffset)!,
+    toPoint(editor, range.endContainer as HTMLElement, range.endOffset)!,
+    direction === "backward",
     range.collapsed
   );
 }

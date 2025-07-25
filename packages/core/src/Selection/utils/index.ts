@@ -1,4 +1,4 @@
-import { Editor } from "../../editor";
+import { Editor } from "../../Editor";
 import { ValRange } from "../module/ValRange";
 import { Point } from "../module/Point";
 

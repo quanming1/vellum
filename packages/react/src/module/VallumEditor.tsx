@@ -5,7 +5,7 @@ export function VallumEditor({ editor }: { editor: Editor }) {
   return (
     <div data-node="block" contentEditable suppressContentEditableWarning>
       {editor.state.blockModel.lines.map((line) => {
-        return <Line key={line.key} lineModel={line} />;
+        return <Line key={line.key} lineModel={line} editor={editor} />;
       })}
     </div>
   );

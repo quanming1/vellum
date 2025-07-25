@@ -1,4 +1,4 @@
-import { Editor } from "../editor";
+import { Editor } from "../Editor";
 import { EditorStatus } from "./types";
 import { BlockModel } from "./module/block-model";
 import { Velmodel } from "velmodel";

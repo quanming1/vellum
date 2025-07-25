@@ -16,8 +16,6 @@ export default function App() {
       model: model,
     });
 
-    console.log("editor.state.blockModel", editor.state.blockModel);
-
     setEditor(editor);
   }, [containerRef.current]);
 

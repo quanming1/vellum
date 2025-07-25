@@ -1,4 +1,4 @@
-import { Editor } from "../editor";
+import { Editor } from "../Editor";
 import { EventType } from "./contant";
 
 export class Event {

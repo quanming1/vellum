@@ -9,3 +9,5 @@ export function isEmptyObject(obj: any) {
 }
 
 export const genUUID = nanoid;
+
+export * from "./BiWeakMap";

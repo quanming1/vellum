@@ -1,4 +1,4 @@
-import { Editor } from "../editor";
+import { Editor } from "../Editor";
 import { EventType } from "../Event/contant";
 import { ValRange } from "./module/ValRange";
 import { getSelection, isBackward } from "./utils";
